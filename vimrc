@@ -159,3 +159,6 @@ endif
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+" I don't like folds
+set nofoldenable
