@@ -4,6 +4,7 @@ nnoremap _ O<esc>j
 
 " clear search highlighting by pressing return
 nnoremap <CR> :noh<return><esc>
+nnoremap <leader><leader> <c-^>
 
 " Maps to make handling windows a bit easier
 noremap <silent> ,h :wincmd h<CR>
