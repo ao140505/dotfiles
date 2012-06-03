@@ -5,6 +5,9 @@ set t_Co=256
 
 set nocompatible
 
+" make it possible to get to system clipboard with *
+set clipboard=unnamed
+
 " set number
 set ruler
 syntax on
