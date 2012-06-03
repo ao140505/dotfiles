@@ -1,6 +1,8 @@
 " Include user's local pre .vimrc config
 let mapleader=","
 
+set t_Co=256
+
 if filereadable(expand("~/.vimrc.pre"))
   source ~/.vimrc.pre
 endif
@@ -21,7 +23,7 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 set list listchars=tab:\ \ ,trail:·
-set winwidth=80
+"set winwidth=80
 set shellcmdflag=-ic
 
 " Searching
@@ -164,3 +166,5 @@ endif
 
 " I don't like folds
 set nofoldenable
+
+color railscasts

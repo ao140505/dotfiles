@@ -74,9 +74,8 @@ set visualbell
 set guioptions-=T
 
 " Default gui color and font
-color railscasts
-set   guifont=Monaco:h15
 set   antialias
+set   guifont=Monaco:h15
 
 " ConqueTerm wrapper
 function StartTerm()
@@ -234,9 +233,4 @@ if exists("loaded_nerd_tree")
   call s:DefineCommand("e", "Edit")
   call s:DefineCommand("mkdir", "Mkdir")
   cabbrev Edit! e!
-endif
-
-" Include user's local vim config
-if filereadable(expand("~/.gvimrc.local"))
-  source ~/.gvimrc.local
 endif
