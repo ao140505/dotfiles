@@ -9,3 +9,4 @@
 --type-add=ruby=.rake,.feature,.erb
 
 --ignore-dir=coverage
+--ignore-dir=tmp
