@@ -24,4 +24,4 @@ mvim()
 export EDITOR=mvim
 # original
 # export PS1="\w$ "
-export PS1='\u@\h/\W\[\e[1;31m\]$(__git_ps1 " (%s)")\[\e[0m\]:'
+export PS1='\W\[\e[1;31m\]$(__git_ps1 " (%s)")\[\e[0m\]:'
