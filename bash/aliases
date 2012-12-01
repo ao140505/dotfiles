@@ -14,9 +14,14 @@ function railsapp {
 # misc
 alias reload='. ~/.bash_profile'
 alias r='rails'
+alias c='clear'
 alias be='bundle exec'
 alias cukes='bundle exec cucumber --drb'
 alias specs='rspec . --drb'
 
 # python
 alias pstart='python manage.py runserver'
+
+alias tmux='TERM=xterm-256color tmux'
+
+alias cons='r s thin -p 4001 -e consumer_app_integration_test'
