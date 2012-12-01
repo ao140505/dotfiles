@@ -1,7 +1,10 @@
 source ~/.bash/aliases
 source ~/.bash/completions
 source ~/.bash/paths
-source ~/.bash/config
+
+if [ -f ~/.server_aliases ]; then
+  source ~/.server_aliases
+fi
 
 # use .localrc for settings specific to one system
 if [ -f ~/.localrc ]; then
