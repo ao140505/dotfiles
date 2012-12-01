@@ -38,6 +38,7 @@ set laststatus=2
 
 " Command-T configuration
 let g:CommandTMaxHeight=10
+map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
 
 " CTags
 map <Leader>rt :!bundle show --paths \| xargs ctags -R && ctags --extra=+f -R -a *<CR><CR>
