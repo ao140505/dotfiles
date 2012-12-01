@@ -40,8 +40,10 @@ set laststatus=2
 let g:CommandTMaxHeight=10
 
 " CTags
-map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
-map <C-\> :tnext<CR>
+map <Leader>rt :!bundle show --paths \| xargs ctags -R && ctags --extra=+f -R -a *<CR><CR>
+map <c-b> :tprevious<CR>
+map <c-n> :tnext<CR>
+map tt <c-]>
 
 " Remember last location in file
 if has("autocmd")
