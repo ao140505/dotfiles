@@ -10,3 +10,9 @@
 
 --ignore-dir=coverage
 --ignore-dir=tmp
+--ignore-dir=tmp
+--ignore-dir=spec/fixtures/cassettes/
+--ignore-dir=test_reports
+--ignore-dir=public/stylesheets/compiled
+--ignore-dir=vendor/octazen
+--ignore-dir=public/javascripts/
