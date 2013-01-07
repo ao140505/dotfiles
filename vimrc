@@ -31,13 +31,14 @@ set smartcase
 
 " Tab completion
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,tmp
 
 " Status bar - always show
 set laststatus=2
 
 " Command-T configuration
 let g:CommandTMaxHeight=10
+
 map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
 
 " CTags
