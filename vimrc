@@ -156,7 +156,7 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>s :call RunTestFile()<cr>
 map <leader>S :call RunNearestTest()<cr>
-map <leader>a :call RunTests('.')<cr>
+map <leader>A :call RunTests('.')<cr>
 map <leader>c :w\|:!script/features<cr>
 map <leader>w :w\|:!script/features --profile wip<cr>
 
@@ -260,3 +260,5 @@ function! AlternateForCurrentFile()
   return new_file
 endfunction
 nnoremap <leader>. :call OpenTestAlternate()<cr>
+
+map <leader>a :Ack 
