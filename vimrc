@@ -1,4 +1,3 @@
-" Include user's local pre .vimrc config
 let mapleader=","
 
 set t_Co=256
@@ -112,11 +111,6 @@ runtime! macros/matchit.vim
 " Show (partial) command in the status line
 set showcmd
 
-if has("gui_running")
-  " Automatically resize splits when resizing MacVim window
-  autocmd VimResized * wincmd =
-endif
-
 " I don't like folds
 set nofoldenable
 
@@ -211,26 +205,6 @@ function! RunTests(filename)
         end
     end
 endfunction
-
-" THIS DOESN'T WORK!!!!
-map <leader>gr :topleft :split config/routes.rb<cr>
-function! ShowRoutes()
-  " Requires 'scratch' plugin
-  :topleft 100 :split __Scratch__
-  " Make sure Vim doesn't write __Routes__ as a file
-  :set buftype=nofile
-  " Delete everything
-  :normal 1GdG
-  " Put routes output in buffer
-  :0r! rake -s routes
-  " Size window to number of lines (1 plus rake output length)
-  :exec ":normal " . line("$") . "_ "
-  " Move cursor to bottom
-  :normal 1GG
-  " Delete empty trailing line
-  :normal dd
-endfunction
-map <leader>gR :call ShowRoutes()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SWITCH BETWEEN TEST AND PRODUCTION CODE
