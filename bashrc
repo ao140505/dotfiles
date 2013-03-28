@@ -19,3 +19,7 @@ fi
 
 export EDITOR=vim
 export PS1='\W\[\e[1;31m\]$(__git_ps1 " (%s)")\[\e[0m\]:'
+
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
