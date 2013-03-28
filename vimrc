@@ -46,6 +46,9 @@ map <c-b> :tprevious<CR>
 map <c-n> :tnext<CR>
 map tt <c-]>
 
+" mapping to change ,s mapping
+map <Leader>m :map ,s :w\\|!clear && ruby %<C-V><CR>
+
 " Remember last location in file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
