@@ -36,7 +36,7 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,tmp
 set laststatus=2
 
 " Command-T configuration
-let g:CommandTMaxHeight=10
+let g:CommandTMaxHeight=25
 
 map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
 
