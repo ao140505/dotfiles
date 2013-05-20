@@ -2,8 +2,6 @@ let mapleader=","
 
 set t_Co=256
 
-set nocompatible
-
 " make it possible to get to system clipboard with *
 set clipboard=unnamed
 
@@ -15,12 +13,17 @@ syntax on
 set encoding=utf-8
 
 " Whitespace stuff
-set nowrap
+set winwidth=79
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
 set list listchars=tab:\ \ ,trail:·
+
+augroup NoWrapForHaml
+    autocmd!
+    autocmd FileType haml setlocal nowrap
+augroup END
 
 " Searching
 set hlsearch
@@ -55,27 +58,9 @@ if has("autocmd")
     \| exe "normal g'\"" | endif
 endif
 
-" wrapping just used for markdown
-function s:setupWrapping()
-  set wrap
-  set wrapmargin=2
-  set textwidth=72
-endfunction
-
-function s:setupMarkup()
-  call s:setupWrapping()
-  map <buffer> <Leader>p :Hammer<CR>
-endfunction
-
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
-au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,*.watchr,Guardfile}    set ft=ruby
-
-
+au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,*.watchr,Guardfile,*.thor}    set ft=ruby
 au BufRead,BufNewFile *.scss.erb    set ft=scss
-
-" md, markdown, and mk are markdown and define buffer-local preview
-au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
-
 " add json syntax highlighting
 au BufNewFile,BufRead *.json set ft=javascript
 
@@ -84,10 +69,6 @@ set backspace=indent,eol,start
 
 " load the plugin and indent settings for the detected filetype
 filetype plugin indent on
-
-" Opens an edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>e
-map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
@@ -197,14 +178,14 @@ function! RunTests(filename)
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     if match(a:filename, '\.feature$') != -1 && match(expand("%"), 'features') != -1
-        exec ":!bundle exec cucumber --drb " . a:filename
+        exec ":!bundle exec cucumber " . a:filename
     else
         if filereadable("script/test")
             exec ":!script/test " . a:filename
         elseif filereadable("Gemfile")
-            exec ":!bundle exec rspec --color " . a:filename
+            exec ":!s " . a:filename
         else
-            exec ":!rspec --color " . a:filename
+            exec ":!s " . a:filename
         end
     end
 endfunction
@@ -239,4 +220,17 @@ function! AlternateForCurrentFile()
 endfunction
 nnoremap <leader>. :call OpenTestAlternate()<cr>
 
-map <leader>a :Ack 
+"map <leader>a :Ack 
+map <leader>a :!clear && ack 
+
+" wrapping just used for markdown
+function s:setupWrapping()
+  set wrap
+  set wrapmargin=2
+  set textwidth=72
+endfunction
+
+function s:setupMarkup()
+  call s:setupWrapping()
+endfunction
+au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
