@@ -25,3 +25,4 @@ alias pstart='python manage.py runserver'
 alias tmux='TERM=xterm-256color tmux'
 
 alias cons='bundle exec rails s thin -p 4001 -e consumer_app_integration_test'
+alias ls='ls -G'
