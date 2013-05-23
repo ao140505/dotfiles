@@ -1,0 +1,7 @@
+powder
+tags
+.DS_Store
+.svn
+*~
+.*.swp
+tmux-*.log
