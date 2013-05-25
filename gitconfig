@@ -8,6 +8,7 @@
   di = diff
   dc = diff --cached
   ds = diff --stat=160,120
+  pom = push origin master
   amend = commit --amend
   aa = add --all
   recent = for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)'
