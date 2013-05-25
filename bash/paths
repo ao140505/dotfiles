@@ -1,3 +1,0 @@
-export PATH="/usr/local/bin:$PATH"
-PATH=$PATH:$HOME/bin
-export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
