@@ -1,33 +1,21 @@
 require 'rake'
-require 'erb'
 
 desc "install the dot files into user's home directory"
 task :install do
-  replace_all = false
-  Dir['*'].each do |file|
+  # bin needs to not end up as a dotfile
+  # TODO: fix that and clean this up a bit
+  $replace_all = false
+  Dir['*'].reject{|file| file == 'bin'}.each do |file|
     next if %w[Rakefile README.rdoc LICENSE].include? file
 
-    if File.exist?(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"))
-      if File.identical? file, File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
-        puts "identical ~/.#{file.sub('.erb', '')}"
+    dotfile = "~/.#{file}"
+    if File.exist?(dotfile)
+      if File.identical? file, dotfile
+        puts "identical #{dotfile}"
       elsif replace_all
         replace_file(file)
       else
-        print "~/.#{file.sub('.erb', '')} already exists. replace it? [y]es, [n]o, [b]ackup, replace [a]ll, [q]uit "
-        case $stdin.gets.chomp
-        when 'a'
-          replace_all = true
-          replace_file(file)
-        when 'y'
-          replace_file(file)
-        when 'q'
-          exit
-        when 'b'
-          `mv "$HOME/.#{file}" "$HOME/.#{file}.backup"`
-          replace_file(file)
-        else
-          puts "skipping ~/.#{file.sub('.erb', '')}"
-        end
+        get_replacement_preferences(file)
       end
     else
       link_file(file)
@@ -35,19 +23,30 @@ task :install do
   end
 end
 
+def get_replacement_preferences(file)
+  print "~/.#{file} already exists. replace it? [y]es, [n]o, [b]ackup, replace [a]ll, [q]uit "
+  case $stdin.gets.chomp
+  when 'a'
+    $replace_all = true
+    replace_file(file)
+  when 'y'
+    replace_file(file)
+  when 'q'
+    exit
+  when 'b'
+    `mv "~/.#{file}" "~/.#{file}.backup"`
+    replace_file(file)
+  else
+    puts "skipping ~/.#{file}"
+  end
+end
+
 def replace_file(file)
-  system %Q{rm -rf "$HOME/.#{file.sub('.erb', '')}"}
+  system %Q{rm -rf "~/.#{file}"}
   link_file(file)
 end
 
 def link_file(file)
-  if file =~ /.erb$/
-    puts "generating ~/.#{file.sub('.erb', '')}"
-    File.open(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"), 'w') do |new_file|
-      new_file.write ERB.new(File.read(file)).result(binding)
-    end
-  else
-    puts "linking ~/.#{file}"
-    system %Q{ln -s "$PWD/#{file}" "$HOME/.#{file}"}
-  end
+  puts "linking ~/.#{file}"
+  system %Q{ln -s "$PWD/#{file}" "~/.#{file}"}
 end
