@@ -1,4 +1,5 @@
 require 'rake'
+require 'pry'
 
 desc "install the dot files into user's home directory"
 task :install do
@@ -8,11 +9,11 @@ task :install do
   Dir['*'].reject{|file| file == 'bin'}.each do |file|
     next if %w[Rakefile README.rdoc LICENSE].include? file
 
-    dotfile = "~/.#{file}"
+    dotfile = "#{ENV['HOME']}/.#{file}"
     if File.exist?(dotfile)
       if File.identical? file, dotfile
         puts "identical #{dotfile}"
-      elsif replace_all
+      elsif $replace_all
         replace_file(file)
       else
         get_replacement_preferences(file)
@@ -48,5 +49,5 @@ end
 
 def link_file(file)
   puts "linking ~/.#{file}"
-  system %Q{ln -s "$PWD/#{file}" "~/.#{file}"}
+  system %Q{ln -s #{ENV["PWD"]}/#{file} ~/.#{file}}
 end
