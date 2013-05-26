@@ -26,7 +26,7 @@
 	status = auto
 	branch = auto
 [core]
-	excludesfile = /Users/aokolish/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = vi
 	autocrlf = input
 [apply]
