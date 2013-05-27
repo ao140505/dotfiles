@@ -19,3 +19,5 @@ function rvm () {
     rbenv shell $2
   fi
 }
+
+set -o vi
