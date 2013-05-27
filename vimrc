@@ -43,6 +43,9 @@ let g:CommandTMaxHeight=25
 
 map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
 
+" exclude _site/ files from command t listings
+set wildignore+=_site
+
 " CTags
 map <Leader>rt :!bundle show --paths \| xargs ctags -R && ctags --extra=+f -R -a *<CR><CR>
 map <c-b> :tprevious<CR>
