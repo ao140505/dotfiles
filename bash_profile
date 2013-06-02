@@ -7,3 +7,10 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
+# terrible fix for rbenv + tmuxinator
+function rvm () {
+  if [[ $1 == 'use' ]]; then
+    rbenv shell $2
+  fi
+}

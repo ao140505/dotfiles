@@ -12,12 +12,3 @@ export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 
 # fix command-t in vim
 stty -ixon
-
-# terrible fix for rbenv + tmuxinator
-function rvm () {
-  if [[ $1 == 'use' ]]; then
-    rbenv shell $2
-  fi
-}
-
-set -o vi
