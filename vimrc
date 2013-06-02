@@ -183,12 +183,10 @@ function! RunTests(filename)
     if match(a:filename, '\.feature$') != -1 && match(expand("%"), 'features') != -1
         exec ":!bundle exec cucumber " . a:filename
     else
-        if filereadable("script/test")
-            exec ":!script/test " . a:filename
-        elseif filereadable("Gemfile")
+        if filereadable("Gemfile")
             exec ":!s " . a:filename
         else
-            exec ":!s " . a:filename
+            exec ":!rspec " . a:filename
         end
     end
 endfunction
