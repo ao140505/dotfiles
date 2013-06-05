@@ -221,7 +221,7 @@ function! AlternateForCurrentFile()
 endfunction
 nnoremap <leader>. :call OpenTestAlternate()<cr>
 
-"map <leader>a :Ack 
+"map <leader>a :Ack
 map <leader>a :!clear && ack 
 
 " wrapping just used for markdown
