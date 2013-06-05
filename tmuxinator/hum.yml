@@ -1,0 +1,11 @@
+# ~/.tmuxinator/hum.yml
+
+project_name: hum
+project_root: ~/code/work/hum-webapp
+rvm: $(cat .ruby-version)
+tabs:
+  - vim: vim
+  - server: while [ ! -S .zeus.sock ]; do sleep 0.2; done && zeus server -p 5000
+  - jobs: while [ ! -S .zeus.sock ]; do sleep 0.2; done && zeus rake jobs:work
+  - zeus: clear && zeus start
+  - shell:
