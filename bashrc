@@ -10,5 +10,9 @@ export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 
+# moar history
+export HISTSIZE=10000
+export HISTFILESIZE=$HISTSIZE
+
 # fix command-t in vim
 stty -ixon
