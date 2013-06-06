@@ -1,5 +1,5 @@
-source ~/.bash/aliases
-source ~/.bash/completions
+. ~/.bash/aliases
+. ~/.bash/completions
 
 export USE_BUNDLER=force
 
