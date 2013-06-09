@@ -16,3 +16,8 @@ export HISTFILESIZE=$HISTSIZE
 
 # fix command-t in vim
 stty -ixon
+
+# Erase duplicates in history
+export HISTCONTROL=erasedups
+# Append to the history file when exiting instead of overwriting it
+shopt -s histappend
