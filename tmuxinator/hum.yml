@@ -5,7 +5,10 @@ project_root: ~/code/work/hum-webapp
 rvm: $(cat .ruby-version)
 tabs:
   - vim: vim
-  - server: while [ ! -S .zeus.sock ]; do sleep 0.2; done && zeus server -p 5000
-  - jobs: while [ ! -S .zeus.sock ]; do sleep 0.2; done && zeus rake jobs:work
-  - zeus: clear && zeus start
+  - zeus/jobs:
+      layout: main-vertical
+      panes:
+        - while [ ! -S .zeus.sock ]; do sleep 0.2; done && c && zeus server -p 5000
+        - while [ ! -S .zeus.sock ]; do sleep 0.2; done && zeus rake jobs:work
+        - clear && zeus start
   - shell:
