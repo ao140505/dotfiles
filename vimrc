@@ -183,7 +183,7 @@ function! RunTests(filename)
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     if match(a:filename, '\.feature$') != -1 && match(expand("%"), 'features') != -1
-        exec ":!bundle exec cucumber " . a:filename
+        exec ":!zeus cucumber " . a:filename
     else
         if filereadable("Gemfile")
             exec ":!s " . a:filename
