@@ -3,6 +3,10 @@
 
 --type-set=haml=.haml
 --type-set=isml=.isml
+--type-set=log=.log
+--nolog
+--type-set=tags=.tags
+--notags
 
 --type-set=coffee=.coffee
 

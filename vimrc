@@ -47,10 +47,12 @@ map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
 set wildignore+=_site
 
 " CTags
-map <Leader>rt :!bundle show --paths \| xargs ctags -R && ctags --extra=+f -R -a *<CR><CR>
+map <Leader>rt :!bundle show --paths \| xargs ctags -f .tags -R && ctags --extra=+f -R -a *<CR><CR>
 map <c-b> :tprevious<CR>
 map <c-n> :tnext<CR>
 map tt <c-]>
+" using custom tag filename
+set tags=.tags
 
 " mapping to change ,s mapping
 map <Leader>m :map ,s :w\\|!clear && ruby %<C-V><CR>
