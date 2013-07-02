@@ -24,8 +24,7 @@ pretty_git_log() {
     # Color merge commits specially
     sed -Ee "s/(Merge branch .* into .*$)/$(printf $ANSI_RED)\1$(printf $ANSI_RESET)/" |
 
-    sed -Ee "s/<//" |
-    sed -Ee "s/>//" |
+    sed -Ee "s/[<>]//g" |
     # Page only if we need to
     more -RS
 }
