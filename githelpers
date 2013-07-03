@@ -8,6 +8,9 @@ SUBJECT="%s"
 
 FORMAT="$HASH}$RELATIVE_TIME}$AUTHOR}$REFS $SUBJECT"
 
+ANSI_RED='\033[31m'
+ANSI_RESET='\033[0m'
+
 function show_git_head() {
   pretty_git_log -1
   git show -p --pretty="tformat:"
