@@ -20,6 +20,9 @@ set softtabstop=2
 set expandtab
 set list listchars=tab:\ \ ,trail:·
 
+" remove trailing whitespace
+nnoremap <leader>w :%s/\s\+$//e<CR>
+
 augroup NoWrapForHaml
     autocmd!
     autocmd FileType haml setlocal nowrap
