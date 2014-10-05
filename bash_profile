@@ -1,5 +1,10 @@
 source ~/.bashrc
 
+if [ -f /etc/profile ]; then
+    PATH=""
+    source /etc/profile
+fi
+
 export PATH="$HOME/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
