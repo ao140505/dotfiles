@@ -21,7 +21,8 @@ set expandtab
 set list listchars=tab:\ \ ,trail:·
 
 " remove trailing whitespace
-nnoremap <leader>w :%s/\s\+$//e<CR>
+nnoremap <leader><Space> :%s/\s\+$//e<CR>
+nnoremap <leader>w :w<CR>
 
 augroup NoWrapForHaml
     autocmd!
@@ -41,16 +42,44 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,tmp
 " Status bar - always show
 set laststatus=2
 
-" Command-T configuration
-let g:CommandTMaxHeight=25
+filetype off    "required by Vundle
 
-map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+Bundle 'heartsentwined/vim-emblem'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'elixir-lang/vim-elixir'
+
+" Run a given vim command on the results of fuzzy selecting from a given shell
+" command. See usage below.
+function! SelectaCommand(choice_command, selecta_args, vim_command)
+  try
+    let selection = system(a:choice_command . " | selecta " . a:selecta_args)
+  catch /Vim:Interrupt/
+    " Swallow the ^C so that the redraw below happens; otherwise there will be
+    " leftovers from selecta on the screen
+    redraw!
+    return
+  endtry
+  redraw!
+  exec a:vim_command . " " . selection
+endfunction
+
+" Find all files in all non-dot directories starting in the working directory.
+" Fuzzy select one of those. Open the selected file with :e.
+nnoremap <leader>t :call SelectaCommand("find * -type f", "", ":e")<cr>
 
 " exclude _site/ files from command t listings
 set wildignore+=_site
+" set wildignore+=bower_components
+set wildignore+=node_modules
 
 " CTags
-map <Leader>rt :!bundle show --paths \| xargs ctags -f .tags -R && ctags --extra=+f -R -a *<CR><CR>
+map <Leader>rt :!bundle show --paths \| xargs ctags -f \.tags -R && ctags --extra=+f -R -a *<CR><CR>
 map <c-b> :tprevious<CR>
 map <c-n> :tnext<CR>
 map tt <c-]>
@@ -71,6 +100,8 @@ au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,*.watchr,
 au BufRead,BufNewFile *.scss.erb    set ft=scss
 " add json syntax highlighting
 au BufNewFile,BufRead *.json set ft=javascript
+
+au BufNewFile,BufRead *.handlebars set ft=mustache
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -106,7 +137,8 @@ set showcmd
 " I don't like folds
 set nofoldenable
 
-color railscasts
+set background=dark
+color solarized
 
 " clear search highlighting by pressing return
 nnoremap <CR> :noh<return><esc>
@@ -144,7 +176,7 @@ endfunction
 map <leader>s :call RunTestFile()<cr>
 map <leader>S :call RunNearestTest()<cr>
 map <leader>A :call RunTests('.')<cr>
-map <leader>c :w\|:!script/features<cr>
+map <leader>f :w\|:!clear && zeus cucumber --tags @focus<cr>
 
 function! RunTestFile(...)
     if a:0
@@ -154,7 +186,7 @@ function! RunTestFile(...)
     endif
 
     " Run the tests for the previously-marked file.
-    let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
+    let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|feature.rb\)$') != -1
     if in_test_file
         call SetTestFile()
     elseif !exists("t:grb_test_file")
@@ -207,7 +239,7 @@ function! AlternateForCurrentFile()
   let new_file = current_file
   let in_spec = match(current_file, '^spec/') != -1
   let going_to_spec = !in_spec
-  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1
+  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<helpers\>') != -1
   if going_to_spec
     if in_app
       let new_file = substitute(new_file, '^app/', '', '')
