@@ -1,5 +1,17 @@
+if [ -f /etc/profile ]; then
+    PATH=""
+    source /etc/profile
+fi
+
+export PATH="$HOME/bin:$PATH"
+export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="/usr/local/share/npm/bin:$PATH"
+eval "$(rbenv init -)"
+
 . ~/.bash/aliases
-. ~/.bash/completions
+source ~/.bash/completion_scripts/git_completion
 
 export USE_BUNDLER=force
 
@@ -23,3 +35,12 @@ export HISTCONTROL=erasedups
 shopt -s histappend
 
 ulimit -n 4096
+
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
+# terrible fix for rbenv + tmuxinator
+function rvm () {
+  if [[ $1 == 'use' ]]; then
+    rbenv shell $2
+  fi
+}

@@ -4,7 +4,6 @@
 alias r='rails'
 alias c='clear'
 alias be='bundle exec'
-alias cukes='bundle exec cucumber --drb'
 
 # colored ls
 alias ls='ls -G'
