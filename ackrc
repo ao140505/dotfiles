@@ -19,3 +19,4 @@
 --ignore-dir=public/stylesheets/compiled
 --ignore-dir=vendor/octazen
 --ignore-dir=public/javascripts/
+--ignore-dir=node_modules
