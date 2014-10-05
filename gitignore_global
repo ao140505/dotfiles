@@ -6,3 +6,5 @@ tags
 .*.swp
 tmux-*.log
 .tags
+custom_plan.rb
+zeus.json
