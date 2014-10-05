@@ -1,14 +1,12 @@
-# ~/.tmuxinator/hum.yml
-
 project_name: hum
 project_root: ~/code/work/hum-webapp
 rvm: $(cat .ruby-version)
-tabs:
+windows:
   - vim: vim
   - zeus/jobs:
       layout: main-vertical
       panes:
-        - while [ ! -S .zeus.sock ]; do sleep 0.2; done && c && zeus server -p 5000
+        - WEB_CONCURRENCY=5 bundle exec unicorn -p 5000 -c ./config/unicorn.rb
         - while [ ! -S .zeus.sock ]; do sleep 0.2; done && zeus rake jobs:work
         - clear && zeus start
   - shell:

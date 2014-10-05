@@ -1,7 +1,5 @@
-# ~/.tmuxinator/blog.yml
-
 project_name: blog
 project_root: ~/Dropbox/code/sites/aokolish.github.io
-tabs:
-  - vim: vim
+windows:
+  - editor: vim
   - preview: bundle exec jekyll serve -w
