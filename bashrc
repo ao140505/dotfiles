@@ -21,3 +21,5 @@ stty -ixon
 export HISTCONTROL=erasedups
 # Append to the history file when exiting instead of overwriting it
 shopt -s histappend
+
+ulimit -n 4096
