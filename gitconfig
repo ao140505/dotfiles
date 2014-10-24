@@ -1,6 +1,6 @@
 [user]
-	name = Alex Okolish
-	email = alex.okolish@gmail.com
+  name = Alex Okolish
+  email = alex.okolish@gmail.com
 [alias]
   st = status -sb
   ci = commit
@@ -22,18 +22,18 @@
   r = !git l -30
   ra = !git r --all
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+  diff = auto
+  status = auto
+  branch = auto
 [core]
-	excludesfile = ~/.gitignore_global
-	editor = vi
-	autocrlf = input
+  excludesfile = ~/.gitignore_global
+  editor = vi
+  autocrlf = input
 [apply]
-	whitespace = nowarn
+  whitespace = nowarn
 [help]
-	autocorrect = 1
+  autocorrect = 1
 [init]
-	templatedir = ~/.git_template
+  templatedir = ~/.git_template
 [push]
-	default = simple
+  default = simple
