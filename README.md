@@ -16,3 +16,7 @@ you will have an option to create a backup of each file.
     git clone git://github.com/ao140505/dotfiles ~/.dotfiles
     cd ~/.dotfiles
     rake install
+
+## License
+
+These dotfiles are released under the [MIT License](http://opensource.org/licenses/MIT).
