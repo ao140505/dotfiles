@@ -35,6 +35,10 @@ set incsearch
 set ignorecase
 set smartcase
 
+" automatically reload files that have changed outside of vim
+" e.g. when switching branches or stashing changes
+set autoread
+
 " Tab completion
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,tmp
