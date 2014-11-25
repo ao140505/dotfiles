@@ -83,6 +83,9 @@ set wildignore+=_site
 set wildignore+=node_modules
 
 " CTags
+" consider remapping this to something else
+" because it is causing my <leader>r mapping to be slow (rename a file)
+" not sure what I would map this to
 map <Leader>rt :!bundle show --paths \| xargs ctags -f \.tags -R && ctags --extra=+f -R -a *<CR><CR>
 map <c-b> :tprevious<CR>
 map <c-n> :tnext<CR>
