@@ -5,6 +5,8 @@ set t_Co=256
 " make it possible to get to system clipboard with *
 set clipboard=unnamed
 
+set spell spelllang=en_us
+
 " set number
 set ruler
 syntax on
