@@ -2,7 +2,7 @@ project_name: hum
 project_root: ~/code/work/hum-webapp
 rvm: $(cat .ruby-version)
 windows:
-  - vim: vim
+  - editor: vim
   - zeus/jobs:
       layout: main-vertical
       panes:
