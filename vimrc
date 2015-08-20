@@ -267,7 +267,7 @@ endfunction
 nnoremap <leader>. :call OpenTestAlternate()<cr>
 
 "map <leader>a :Ack
-map <leader>a :!clear && ack 
+map <leader>a :!clear && ack --ignore-file=is:tags 
 
 " wrapping just used for markdown
 function s:setupWrapping()
