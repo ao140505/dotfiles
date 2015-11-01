@@ -6,5 +6,6 @@ tags
 .*.swp
 tmux-*.log
 .tags
+.sass-cache
 custom_plan.rb
 zeus.json
