@@ -51,14 +51,18 @@ set laststatus=2
 filetype off    "required by Vundle
 
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
-Bundle 'heartsentwined/vim-emblem'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'elixir-lang/vim-elixir'
+Plugin 'gmarik/vundle'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'mxw/vim-jsx'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
