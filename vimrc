@@ -81,12 +81,7 @@ endfunction
 
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
-nnoremap <leader>t :call SelectaCommand("find . -type f ! -path './node_modules/*' ! -path './tmp/*' ! -path './.git/*' \| cut -c 3- ", "", ":e")<cr>
-
-" exclude _site/ files from command t listings
-set wildignore+=_site
-" set wildignore+=bower_components
-set wildignore+=node_modules
+nnoremap <leader>t :call SelectaCommand("find . -not \\( -path './node_modules' -prune \\) -not \\( -path './tmp -prune' \\) -not \\( -path './.git' \\) -type f \| cut -c 3- ", "", ":e")<cr>
 
 " CTags
 " consider remapping this to something else
