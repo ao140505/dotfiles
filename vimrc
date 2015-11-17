@@ -299,7 +299,7 @@ map <leader>r :call RenameFile()<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! FindAndReplace()
     let find_this = expand('<cword>')
-    let replace_with = input('Replace "'.expand('<cword>').'" with: ')
+    let replace_with = input('Replace "'. find_this .'" with: ')
     :exec "args `" . 'ack -l ' . find_this . "`"
     " eventignore-=Syntax enables syntax highlighting w/argdo
     :exec "argdo set eventignore-=Syntax \| %s/" . find_this ."/" . replace_with "/g " . "\| w"
