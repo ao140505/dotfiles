@@ -31,6 +31,8 @@ augroup NoWrapForHaml
     autocmd FileType haml setlocal nowrap
 augroup END
 
+set nowrap
+
 " Searching
 set hlsearch
 set incsearch
@@ -57,12 +59,22 @@ call vundle#begin()
 " required!
 Plugin 'gmarik/vundle'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'mxw/vim-jsx'
+Plugin 'scrooloose/syntastic'
+
+Plugin 'pangloss/vim-javascript'
+Plugin 'othree/yajs.vim'
+Plugin 'othree/es.next.syntax.vim'
+Plugin 'othree/vim-jsx'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ["eslint"]
 
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
@@ -120,10 +132,6 @@ filetype plugin indent on
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-
-" Enable syntastic syntax checking
-let g:syntastic_enable_signs=1
-let g:syntastic_quiet_warnings=1
 
 " Use modeline overrides
 set modeline
