@@ -184,7 +184,7 @@ endfunction
 map <leader>s :call RunTestFile()<cr>
 map <leader>S :call RunNearestTest()<cr>
 map <leader>A :call RunTests('.')<cr>
-map <leader>f :w\|:!clear && zeus cucumber --tags @focus<cr>
+" map <leader>f :w\|:!clear && zeus cucumber --tags @focus<cr>
 
 function! RunTestFile(...)
     if a:0
