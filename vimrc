@@ -89,7 +89,8 @@ endfunction
 
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
-nnoremap <leader>t :call SelectaCommand("find . -not \\( -path './node_modules' -prune \\) -not \\( -path './tmp -prune' \\) -not \\( -path './.git' \\) -type f \| cut -c 3- ", "", ":e")<cr>
+let find_command = "find . -not \( -path './*sass-cache' -prune \) -not \( -path './*node_modules' -prune \) -not \( -path './*tmp' -prune \) -not \( -path './*git' -prune \) -type f | cut -c 3- "
+nnoremap <leader>t :call SelectaCommand(escape(find_command, "()"), "", ":e")<cr>
 
 " CTags
 " consider remapping this to something else
