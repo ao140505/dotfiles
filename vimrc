@@ -70,6 +70,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ["eslint"]
+let g:syntastic_javascript_eslint_exec="/Users/aokolish/work/lendinghome-monolith/consumer/node_modules/.bin/eslint"
 
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
