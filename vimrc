@@ -224,18 +224,13 @@ function! RunTests(filename)
     " Write the file and run tests for the given filename
     :w
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     if match(a:filename, '\.feature$') != -1 && match(expand("%"), 'features') != -1
         exec ":!zeus cucumber " . a:filename
     else
         if filereadable("Gemfile")
-            exec ":!s " . a:filename
+            :silent !tmux send-keys -t right 'clear' C-m
+            :silent exec "!tmux send-keys -t right 's " . a:filename . "' C-m"
+            :redraw!
         else
             exec ":!rspec " . a:filename
         end
