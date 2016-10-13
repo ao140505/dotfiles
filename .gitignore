@@ -2,6 +2,7 @@ vim/.netrwhist
 vim/.VimballRecord
 vim/.VimballRecord
 vim/bundle/**
+vim/spell/*
 .DS_Store
 bin/lh-*
 bin/bin
