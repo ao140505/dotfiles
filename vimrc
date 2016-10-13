@@ -38,6 +38,8 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+" show count when using *
+map * *<C-O>:%s///gn<CR>
 
 " automatically reload files that have changed outside of vim
 " e.g. when switching branches or stashing changes
