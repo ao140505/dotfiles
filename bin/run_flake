@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# Run spec in a loop until it fails
+#
+
+COUNT=1
+while zeus spec --seed $RANDOM $1; do
+  echo '-----------------------------------'
+  echo Test passed $COUNT times
+  echo '-----------------------------------'
+  let COUNT=COUNT+1
+done
