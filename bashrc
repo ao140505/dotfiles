@@ -48,3 +48,9 @@ function rvm () {
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+## lendinghome toolbelt
+export PATH="~/work/lendinghome-monolith/toolbelt:~/work/lendinghome-monolith/toolbelt/bin:$PATH"
+
+export NVM_DIR="/Users/aokolish/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

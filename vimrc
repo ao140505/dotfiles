@@ -5,6 +5,8 @@ set t_Co=256
 " make it possible to get to system clipboard with *
 set clipboard=unnamed
 
+set mouse=a
+
 set spell spelllang=en_us
 
 " set number
@@ -69,8 +71,9 @@ filetype plugin indent on    " required
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height = 5
 let g:syntastic_javascript_checkers = ["eslint"]
 let g:syntastic_javascript_eslint_exec="/Users/aokolish/work/lendinghome-monolith/consumer/node_modules/.bin/eslint"
 
@@ -267,8 +270,11 @@ function! AlternateForCurrentFile()
 endfunction
 nnoremap <leader>. :call OpenTestAlternate()<cr>
 
-"map <leader>a :Ack
-map <leader>a :!clear && ack --ignore-file=is:tags 
+if executable('ag')
+  let g:ackprg = 'ag --nogroup --nocolor --column'
+endif
+map <leader>a :Ack!<space>
+" map <leader>a :!clear && ack --ignore-file=is:tags 
 
 " wrapping just used for markdown
 function s:setupWrapping()
@@ -302,8 +308,9 @@ map <leader>r :call RenameFile()<cr>
 function! FindAndReplace()
     let find_this = expand('<cword>')
     let replace_with = input('Replace "'. find_this .'" with: ')
+
     :exec "args `" . 'ack -l ' . find_this . "`"
     " eventignore-=Syntax enables syntax highlighting w/argdo
-    :exec "argdo set eventignore-=Syntax \| %s/" . find_this ."/" . replace_with "/g " . "\| w"
+    :exec "argdo set eventignore-=Syntax \| %s/" . find_this ."/" . replace_with . "/gc " . "\| w"
 endfunction
 map <leader>f :call FindAndReplace()<cr>

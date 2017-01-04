@@ -4,7 +4,7 @@
 #
 
 if [ -S .zeus.sock ]; then
-  spring rspec --fail-fast "$@"
+  zeus spec --fail-fast "$@"
 else
-  bundle exec rspec "$@"
+  spring rspec "$@"
 fi
