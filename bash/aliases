@@ -1,6 +1,7 @@
-alias r='rails'
 alias c='clear'
 alias be='bundle exec'
 
 # colored ls
 alias ls='ls -G'
+
+alias mux='tmuxinator'
