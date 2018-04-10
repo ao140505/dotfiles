@@ -4,7 +4,7 @@
 #
 
 COUNT=1
-while bundle exec rspec --seed $RANDOM $1; do
+while spring rspec --seed $RANDOM $1; do
   echo '-----------------------------------'
   echo Test passed $COUNT times
   echo '-----------------------------------'
