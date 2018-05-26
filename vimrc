@@ -271,7 +271,7 @@ endfunction
 nnoremap <leader>. :call OpenTestAlternate()<cr>
 
 if executable('ag')
-  let g:ackprg = 'ag --nogroup --nocolor --column'
+  let g:ackprg = 'ag --nogroup --nocolor --column --ignore cassettes --hidden'
 endif
 map <leader>a :Ack!<space>
 " map <leader>a :!clear && ack --ignore-file=is:tags 
