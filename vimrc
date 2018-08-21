@@ -272,11 +272,8 @@ function! AlternateForCurrentFile()
 endfunction
 nnoremap <leader>. :call OpenTestAlternate()<cr>
 
-if executable('ag')
-  let g:ackprg = 'ag --nogroup --nocolor --column --ignore cassettes --hidden'
-endif
+let g:ackprg = "rg --vimgrep --no-heading --hidden -g '!cassettes' -g '!*bundle.js' -g '!*git' -g '!jquery*.js' -g '!public*.js' -g '!*.js.map' -T pdf -T svg"
 map <leader>a :Ack!<space>
-" map <leader>a :!clear && ack --ignore-file=is:tags 
 
 " wrapping just used for markdown
 function s:setupWrapping()
@@ -311,7 +308,7 @@ function! FindAndReplace()
     let find_this = expand('<cword>')
     let replace_with = input('Replace "'. find_this .'" with: ')
 
-    :exec "args `" . 'ack -l ' . find_this . "`"
+    :exec "args `" . 'ag -l ' . find_this . "`"
     " eventignore-=Syntax enables syntax highlighting w/argdo
     :exec "argdo set eventignore-=Syntax \| %s/" . find_this ."/" . replace_with . "/gc " . "\| w"
 endfunction
