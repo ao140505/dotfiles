@@ -77,6 +77,8 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_javascript_checkers = ["eslint"]
 let g:syntastic_javascript_eslint_exec="/Users/aokolish/work/lendinghome-monolith/consumer/node_modules/.bin/eslint"
 
+map <Leader>g :Gbrowse<CR>
+
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
 function! SelectaCommand(choice_command, selecta_args, vim_command)
