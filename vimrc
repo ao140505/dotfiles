@@ -386,10 +386,10 @@ map <leader>r :call RenameFile()<cr>
 " FIND AND REPLACE ACROSS FILES
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! FindAndReplace()
-    let find_this = expand('<cword>')
+    let find_this = input('Replace : ')
     let replace_with = input('Replace "'. find_this .'" with: ')
 
-    :exec "args `" . 'ag -l ' . find_this . "`"
+    :exec "args `" . 'rg -l ' . find_this . "`"
     " eventignore-=Syntax enables syntax highlighting w/argdo
     :exec "argdo set eventignore-=Syntax \| %s/" . find_this ."/" . replace_with . "/gc " . "\| w"
 endfunction
