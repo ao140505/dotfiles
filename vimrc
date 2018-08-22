@@ -295,6 +295,10 @@ function! RunTests(filename)
       :w
     end
 
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+
     " Rspec binstub
     if filereadable("bin/rspec")
       exec ":!bin/rspec " . a:filename
