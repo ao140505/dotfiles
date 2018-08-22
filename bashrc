@@ -27,6 +27,9 @@ export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export HISTSIZE=10000
 export HISTFILESIZE=$HISTSIZE
 
+# silence annoying "[tunemygc] not enabled" messages
+export RUBY_GC_TUNE_VERBOSE=0
+
 # fix command-t in vim
 stty -ixon
 
@@ -54,3 +57,5 @@ export PATH="~/work/lendinghome-monolith/toolbelt:~/work/lendinghome-monolith/bi
 
 export NVM_DIR="/Users/aokolish/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export RUBY_GC_TUNE_VERBOSE=0
