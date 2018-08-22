@@ -1,0 +1,15 @@
+DULL=0
+
+FG_RED=31
+FG_GREEN=32
+FG_YELLOW=33
+
+##
+# ANSI Escape Commands
+##
+ESC="\033"
+NORMAL="$ESC[m"
+
+RED="$ESC[${DULL};${FG_RED}m"
+GREEN="$ESC[${DULL};${FG_GREEN}m"
+YELLOW="$ESC[${DULL};${FG_YELLOW}m"
