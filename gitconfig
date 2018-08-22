@@ -12,6 +12,8 @@
   amend = commit --amend
   aa = add --all
   recent = for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)'
+  find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
+  show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
 
   # fancy logging stuff
   head = !git l -1
@@ -27,7 +29,7 @@
   branch = auto
 [core]
   excludesfile = ~/.gitignore_global
-  editor = vi
+  editor = vim
   autocrlf = input
 [apply]
   whitespace = nowarn
