@@ -76,6 +76,9 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-unimpaired'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -115,12 +118,13 @@ nnoremap <leader>t :call SelectaCommand(escape(find_command, "()"), "", ":e")<cr
 " consider remapping this to something else
 " because it is causing my <leader>r mapping to be slow (rename a file)
 " not sure what I would map this to
-map <Leader>rt :!bundle show --paths \| xargs ctags -f \.tags -R && ctags --extra=+f -R -a *<CR><CR>
+" map <Leader>rt :Dispatch bundle show --paths \| xargs ctags -f \.tags -R && ctags --extra=+f -R -a *<CR><CR>
+map <Leader>rt :Dispatch ctags --extra=+f -R -a *<CR><CR>
 map <c-b> :tprevious<CR>
 map <c-n> :tnext<CR>
 map tt <c-]>
 " using custom tag filename
-set tags=.tags
+set tags=tags
 
 " mapping to change ,s mapping
 map <Leader>m :map ,s :w\\|!clear && ruby %<C-V><CR>
