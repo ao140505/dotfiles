@@ -24,9 +24,16 @@ set softtabstop=2
 set expandtab
 set list listchars=tab:\ \ ,trail:·
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MISC KEY MAPS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " remove trailing whitespace
 nnoremap <leader><Space> :%s/\s\+$//e<CR>
 nnoremap <leader>w :w<CR>
+" Can't be bothered to understand ESC vs <c-c> in insert mode
+" this is helpful since the escape key is not a physical key on my
+" current laptop
+imap <c-c> <esc>
 
 augroup NoWrapForHaml
     autocmd!
