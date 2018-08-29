@@ -179,8 +179,6 @@ set nofoldenable
 set background=dark
 color solarized
 
-" clear search highlighting by pressing return
-nnoremap <CR> :noh<return><esc>
 nnoremap <leader><leader> <c-^>
 
 " Don't beep
