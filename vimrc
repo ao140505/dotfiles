@@ -37,9 +37,19 @@ nnoremap <leader>w :w<CR>
 " current laptop
 imap <c-c> <esc>
 
-augroup NoWrapForHaml
-    autocmd!
-    autocmd FileType haml setlocal nowrap
+augroup vimrcEx
+  " Clear all autocmds in the group
+  autocmd!
+  autocmd FileType haml setlocal nowrap
+
+  "for ruby, autoindent with two spaces, always expand tabs
+  autocmd FileType ruby,haml,eruby,yaml,html,sass,cucumber set ai sw=2 sts=2 et
+
+  " Jump to last cursor position unless it's invalid or in an event handler
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
 augroup END
 
 set nowrap
@@ -134,12 +144,6 @@ set tags=tags
 
 " mapping to change ,s mapping
 map <Leader>m :map ,s :w\\|!clear && ruby %<C-V><CR>
-
-" Remember last location in file
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal g'\"" | endif
-endif
 
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,*.watchr,Guardfile,*.thor,*.rabl}    set ft=ruby
