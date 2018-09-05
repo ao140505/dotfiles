@@ -16,8 +16,6 @@ eval "$(rbenv init -)"
 source ~/.bash/completion_scripts/git_completion
 source ~/.bash/completion_scripts/git_prompt.sh
 
-export USE_BUNDLER=force
-
 export EDITOR=vim
 
 # Git prompt components
