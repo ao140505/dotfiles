@@ -13,6 +13,8 @@ set spell spelllang=en_us
 set ruler
 syntax on
 
+set undofile
+
 " Set encoding
 set encoding=utf-8
 
