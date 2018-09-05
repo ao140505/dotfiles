@@ -183,7 +183,7 @@ set showcmd
 " I don't like folds
 set nofoldenable
 
-set background=dark
+set background=light
 color solarized
 
 nnoremap <leader><leader> <c-^>
