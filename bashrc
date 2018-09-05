@@ -13,8 +13,7 @@ export PATH="/usr/local/share/npm/bin:$PATH"
 eval "$(rbenv init -)"
 
 . ~/.bash/aliases
-source ~/.bash/completion_scripts/git_completion
-source ~/.bash/completion_scripts/git_prompt.sh
+source ~/bin/git-completion.bash
 
 export EDITOR=vim
 
