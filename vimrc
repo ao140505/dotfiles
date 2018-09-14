@@ -347,7 +347,8 @@ function! AlternateForCurrentFile()
   endif
   return new_file
 endfunction
-nnoremap <leader>. :call OpenTestAlternate()<cr>
+" nnoremap <leader>. :call OpenTestAlternate()<cr>
+nnoremap <leader>. :A<cr>
 
 let g:ackprg = "rg --vimgrep --no-heading --hidden -g '!cassettes' -g '!*bundle.js' -g '!*git' -g '!jquery*.js' -g '!public*.js' -g '!*.js.map' -T pdf -T svg"
 map <leader>a :Ack!<space>
