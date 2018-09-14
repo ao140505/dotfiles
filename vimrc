@@ -127,7 +127,7 @@ nnoremap <leader>t :call SelectaCommand(escape(find_command, "()"), "", ":e")<cr
 " because it is causing my <leader>r mapping to be slow (rename a file)
 " not sure what I would map this to
 " map <Leader>rt :Dispatch bundle show --paths \| xargs ctags -f \.tags -R && ctags --extra=+f -R -a *<CR><CR>
-map <Leader>rt :Dispatch ctags --extra=+f -R -a *<CR><CR>
+map <Leader>ct :Dispatch ctags --extra=+f -R -a *<CR><CR>
 map <c-b> :tprevious<CR>
 map <c-n> :tnext<CR>
 map tt <c-]>
