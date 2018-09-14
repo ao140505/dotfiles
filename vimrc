@@ -97,6 +97,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 map <Leader>g :Gbrowse<CR>
+nnoremap <Leader>n :noh<CR>
 
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
