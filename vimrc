@@ -20,7 +20,7 @@ set undodir=~/.vim/undodir
 set encoding=utf-8
 
 " Whitespace stuff
-set winwidth=79
+set winwidth=80
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
