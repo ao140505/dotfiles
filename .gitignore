@@ -3,6 +3,7 @@ vim/.VimballRecord
 vim/.VimballRecord
 vim/bundle/**
 vim/spell/*
+vim/undodir/*
 .DS_Store
 bin/lh-*
 bin/bin

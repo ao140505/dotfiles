@@ -14,6 +14,7 @@ set ruler
 syntax on
 
 set undofile
+set undodir=~/.vim/undodir
 
 " Set encoding
 set encoding=utf-8
