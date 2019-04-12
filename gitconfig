@@ -45,3 +45,5 @@
 	diff = diff-highlight | less
 [init]
 	templatedir = ~/.git_template
+[commit]
+	verbose = true
