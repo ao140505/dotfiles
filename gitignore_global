@@ -9,3 +9,4 @@ tmux-*.log
 .sass-cache
 custom_plan.rb
 zeus.json
+_script/
