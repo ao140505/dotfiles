@@ -7,7 +7,7 @@ set clipboard=unnamed
 
 set mouse=a
 
-set spell spelllang=en_us
+"set spell spelllang=en_us
 
 " set number
 set ruler
