@@ -81,23 +81,26 @@ set laststatus=2
 
 filetype off    "required by Vundle
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'mileszs/ack.vim'
+Plugin 'vim-scripts/scratch.vim'
+Plugin 'tpope/vim-rhubarb'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-map <Leader>g :Gbrowse<CR>
+map <Leader>g :.Gbrowse<CR>
 nnoremap <Leader>n :noh<CR>
 
 " Run a given vim command on the results of fuzzy selecting from a given shell
