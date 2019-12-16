@@ -80,6 +80,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 ## lendinghome toolbelt
 export PATH="~/work/lendinghome-monolith/toolbelt:~/work/lendinghome-monolith/bin:$PATH"
+export PATH="~/code/work/lendinghome-monolith/toolbelt:~/code/work/lendinghome-monolith/bin:$PATH"
 
 export NVM_DIR="/Users/aokolish/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
