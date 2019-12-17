@@ -95,6 +95,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'mileszs/ack.vim'
 Plugin 'vim-scripts/scratch.vim'
 Plugin 'tpope/vim-rhubarb'
+Plugin 'tpope/vim-endwise'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
