@@ -134,7 +134,8 @@ map <c-b> :tprevious<CR>
 map <c-n> :tnext<CR>
 map tt <c-]>
 " using custom tag filename
-set tags=tags
+"set tags=tags
+set tags^=./.git/tags;
 
 " mapping to change ,s mapping
 map <Leader>m :map ,s :w\\|!clear && ruby %<C-V><CR>
