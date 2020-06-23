@@ -381,7 +381,7 @@ map <leader>a :Ack!<space>
 function s:setupWrapping()
   set wrap
   set wrapmargin=2
-  set textwidth=72
+  set textwidth=80
 endfunction
 
 function s:setupMarkup()
