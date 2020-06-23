@@ -2,8 +2,6 @@ require 'rake'
 
 desc "install the dot files into user's home directory"
 task :install do
-  # bin needs to not end up as a dotfile
-  # TODO: fix that and clean this up a bit
   $replace_all = false
   Dir['*'].reject{|file| file == 'bin'}.each do |file|
     next if %w[Rakefile README.rdoc LICENSE].include? file
@@ -18,7 +16,22 @@ task :install do
         get_replacement_preferences(file)
       end
     else
-      link_file(file)
+      link_file(file, is_dotfile: true)
+    end
+  end
+
+  Dir['bin/*'].each do |file|
+    binfile = "#{ENV['HOME']}/#{file}"
+    if File.exist?(binfile)
+      if File.identical? file, binfile
+        puts "identical #{binfile}"
+      elsif $replace_all
+        replace_file(file)
+      else
+        get_replacement_preferences(file)
+      end
+    else
+      link_file(file, is_dotfile: false)
     end
   end
 end
@@ -46,7 +59,11 @@ def replace_file(file)
   link_file(file)
 end
 
-def link_file(file)
+def link_file(file, is_dotfile:)
   puts "linking ~/.#{file}"
-  system %Q{ln -s #{ENV["PWD"]}/#{file} ~/.#{file}}
+  if is_dotfile
+    system %Q{ln -s #{ENV["PWD"]}/#{file} ~/.#{file}}
+  else
+    system %Q{ln -s #{ENV["PWD"]}/#{file} ~/#{file}}
+  end
 end
